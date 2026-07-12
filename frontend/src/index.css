@@ -1,8 +1,18 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono&family=Orbitron:wght@600;700&display=swap');
+@import "tailwindcss";
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@theme {
+  --color-navy: #0D1B2A;
+  --color-royalblue: #1565C0;
+  --color-cyan: #00B4D8;
+  --color-gold: #FFD60A;
+  --color-success: #22C55E;
+  --color-ice: #EFF6FF;
+
+  --font-orbitron: "Orbitron", sans-serif;
+  --font-inter: "Inter", sans-serif;
+  --font-jetbrains: "JetBrains Mono", monospace;
+}
 
 @layer base {
   body {
