@@ -1,0 +1,37 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono&family=Orbitron:wght@600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-navy text-ice font-inter min-h-screen antialiased;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-inter font-semibold;
+  }
+  
+  .font-display {
+    @apply font-orbitron font-bold;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply px-6 py-3 bg-royalblue hover:bg-blue-700 text-white font-medium rounded-lg transition-colors shadow-lg shadow-royalblue/20;
+  }
+  
+  .btn-outline {
+    @apply px-6 py-3 border border-cyan text-cyan hover:bg-cyan/10 font-medium rounded-lg transition-colors;
+  }
+  
+  .glass-card {
+    @apply bg-white/5 border border-white/10 backdrop-blur-md rounded-xl p-6 shadow-xl;
+  }
+  
+  .input-field {
+    @apply w-full bg-white/5 border border-white/10 text-white rounded-lg px-4 py-3 focus:outline-none focus:border-cyan focus:ring-1 focus:ring-cyan transition-all;
+  }
+}
