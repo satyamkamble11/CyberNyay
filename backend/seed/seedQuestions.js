@@ -1,7 +1,10 @@
 const mongoose = require('mongoose');
+const dns = require('dns');
 const dotenv = require('dotenv');
 const Question = require('../models/Question');
 const connectDB = require('../config/db');
+
+dns.setServers(['8.8.8.8', '1.1.1.1']);
 
 dotenv.config({ path: '../.env' }); // Assuming run from seed directory or backend root
 
@@ -85,10 +88,7 @@ const seedDB = async () => {
     // If running from backend directory: node seed/seedQuestions.js
     require('dotenv').config(); 
     
-    await mongoose.connect(process.env.MONGO_URI, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true
-    });
+    await mongoose.connect(process.env.MONGO_URI);
     console.log('MongoDB Connected for Seeding');
 
     await Question.deleteMany(); // Clear existing questions
