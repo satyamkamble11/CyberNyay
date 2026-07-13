@@ -51,8 +51,8 @@ router.post('/register', async (req, res) => {
       res.status(400).json({ message: 'Invalid user data' });
     }
   } catch (error) {
-    console.error(error);
-    res.status(500).json({ message: 'Server Error' });
+    console.error('Register error:', error.stack || error);
+    res.status(500).json({ message: error.message || 'Server Error' });
   }
 });
 
@@ -77,8 +77,8 @@ router.post('/login', async (req, res) => {
       res.status(401).json({ message: 'Invalid email or password' });
     }
   } catch (error) {
-    console.error(error);
-    res.status(500).json({ message: 'Server Error' });
+    console.error('Login error:', error.stack || error);
+    res.status(500).json({ message: error.message || 'Server Error' });
   }
 });
 
@@ -105,8 +105,8 @@ router.get('/profile', protect, async (req, res) => {
       res.status(404).json({ message: 'User not found' });
     }
   } catch (error) {
-    console.error(error);
-    res.status(500).json({ message: 'Server Error' });
+    console.error('Profile error:', error.stack || error);
+    res.status(500).json({ message: error.message || 'Server Error' });
   }
 });
 
