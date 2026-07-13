@@ -2,7 +2,9 @@ import axios from 'axios';
 
 const envBaseUrl = import.meta.env.VITE_API_URL?.trim();
 const fallbackBaseUrl = typeof window !== 'undefined'
-  ? `${window.location.origin}/api`
+  ? (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1')
+    ? 'http://localhost:5000/api'
+    : 'https://cybernyay.onrender.com/api'
   : 'http://localhost:5000/api';
 const rawBaseUrl = envBaseUrl || fallbackBaseUrl;
 const normalizedBaseUrl = rawBaseUrl.replace(/\/$/, '');
