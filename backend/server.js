@@ -25,6 +25,23 @@ app.use('/api/questions', require('./routes/questions'));
 app.use('/api/quiz', require('./routes/quiz'));
 app.use('/api/leaderboard', require('./routes/leaderboard'));
 
+// Diagnostic endpoint to check DB connection and required env vars
+app.get('/api/dbstatus', (req, res) => {
+  try {
+    const state = mongoose.connection.readyState; // 0 disconnected, 1 connected, 2 connecting, 3 disconnecting
+    return res.json({
+      dbReadyState: state,
+      env: {
+        MONGO_URI_SET: !!process.env.MONGO_URI,
+        JWT_SECRET_SET: !!process.env.JWT_SECRET
+      }
+    });
+  } catch (err) {
+    console.error('DB status error:', err.stack || err);
+    return res.status(500).json({ error: err.message || 'Error checking DB status' });
+  }
+});
+
 app.get('/', (req, res) => res.send('API Running'));
 app.get('/health', (req, res) => res.status(200).json({ status: 'ok' }));
 
