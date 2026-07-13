@@ -12,10 +12,6 @@ const baseUrl = normalizedBaseUrl.endsWith('/api')
   ? normalizedBaseUrl
   : `${normalizedBaseUrl}/api`;
 
-if (!envBaseUrl && typeof window !== 'undefined') {
-  console.warn('VITE_API_URL is not set, using site origin for API:', baseUrl);
-}
-
 const api = axios.create({
   baseURL: baseUrl,
 });
