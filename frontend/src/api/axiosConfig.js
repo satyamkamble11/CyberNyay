@@ -1,7 +1,21 @@
 import axios from 'axios';
 
+const envBaseUrl = import.meta.env.VITE_API_URL?.trim();
+const fallbackBaseUrl = typeof window !== 'undefined'
+  ? `${window.location.origin}/api`
+  : 'http://localhost:5000/api';
+const rawBaseUrl = envBaseUrl || fallbackBaseUrl;
+const normalizedBaseUrl = rawBaseUrl.replace(/\/$/, '');
+const baseUrl = normalizedBaseUrl.endsWith('/api')
+  ? normalizedBaseUrl
+  : `${normalizedBaseUrl}/api`;
+
+if (!envBaseUrl && typeof window !== 'undefined') {
+  console.warn('VITE_API_URL is not set, using site origin for API:', baseUrl);
+}
+
 const api = axios.create({
-  baseURL: import.meta.env.VITE_API_URL || 'http://localhost:5000/api',
+  baseURL: baseUrl,
 });
 
 api.interceptors.request.use((config) => {
