@@ -17,7 +17,7 @@ const Login = () => {
       await login(formData.email, formData.password);
       navigate('/dashboard');
     } catch (err) {
-      setError('Invalid email or password');
+      setError(err.response?.data?.message || 'Invalid email or password');
     }
   };
 
@@ -56,8 +56,8 @@ const Login = () => {
         <p className="mt-4 text-center text-sm text-gray-400">
           Don't have an account? <Link to="/register" className="text-cyan hover:underline">Register here</Link>
         </p>
-        <p className="mt-2 text-center text-xs text-gray-500">
-          V1 = Login/Register only. Forgot password will be added later.
+        <p className="mt-2 text-center text-sm">
+          <Link to="/forgot-password" className="text-cyan hover:underline">Forgot password?</Link>
         </p>
       </div>
     </div>
