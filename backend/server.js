@@ -24,6 +24,7 @@ app.use('/api/auth', require('./routes/auth'));
 app.use('/api/questions', require('./routes/questions'));
 app.use('/api/quiz', require('./routes/quiz'));
 app.use('/api/leaderboard', require('./routes/leaderboard'));
+app.use('/api/admin', require('./routes/admin'));
 
 // Diagnostic endpoint to check DB connection and required env vars
 app.get('/api/dbstatus', (req, res) => {

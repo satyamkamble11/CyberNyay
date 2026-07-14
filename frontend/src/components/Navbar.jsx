@@ -27,6 +27,11 @@ const Navbar = () => {
                 <Link to="/units" className="text-gray-300 hover:text-cyan flex items-center transition-colors">
                   <BookOpen className="w-4 h-4 mr-1" /> Units
                 </Link>
+                {user?.role === 'admin' && (
+                  <Link to="/admin" className="text-gray-300 hover:text-cyan flex items-center transition-colors">
+                    Admin
+                  </Link>
+                )}
                 <Link to="/leaderboard" className="text-gray-300 hover:text-cyan flex items-center transition-colors">
                   <Trophy className="w-4 h-4 mr-1" /> Leaderboard
                 </Link>
